@@ -23,20 +23,20 @@ dest_dir_executables = "/Users/ritchiejoseph/Downloads/DownloadedExecutables"
 dest_dir_code = "/Users/ritchiejoseph/Downloads/DownloadedCode"
 
 # supported image types
-image_extensions = [".jpg", ".jpeg", ".jpe", ".jif", ".jfif", ".jfi", ".png", ".gif", ".webp", ".tiff", ".tif", ".psd", ".raw", ".arw", ".cr2", ".nrw",
-                    ".k25", ".bmp", ".dib", ".heif", ".heic", ".ind", ".indd", ".indt", ".jp2", ".j2k", ".jpf", ".jpf", ".jpx", ".jpm", ".mj2", ".svg", ".svgz", ".ai", ".eps", ".ico"]
+image_extensions = {".jpg", ".jpeg", ".jpe", ".jif", ".jfif", ".jfi", ".png", ".gif", ".webp", ".tiff", ".tif", ".psd", ".raw", ".arw", ".cr2", ".nrw",
+                    ".k25", ".bmp", ".dib", ".heif", ".heic", ".ind", ".indd", ".indt", ".jp2", ".j2k", ".jpf", ".jpf", ".jpx", ".jpm", ".mj2", ".svg", ".svgz", ".ai", ".eps", ".ico"}
 # supported Video types
-video_extensions = [".webm", ".mpg", ".mp2", ".mpeg", ".mpe", ".mpv", ".ogg",
-                    ".mp4", ".mp4v", ".m4v", ".avi", ".wmv", ".mov", ".qt", ".flv", ".swf", ".avchd"]
+video_extensions = {".webm", ".mpg", ".mp2", ".mpeg", ".mpe", ".mpv", ".ogg",
+                    ".mp4", ".mp4v", ".m4v", ".avi", ".wmv", ".mov", ".qt", ".flv", ".swf", ".avchd"}
 # supported Audio types
-audio_extensions = [".m4a", ".flac", "mp3", ".wav", ".wma", ".aac"]
+audio_extensions = {".m4a", ".flac", "mp3", ".wav", ".wma", ".aac"}
 # supported Document types
-document_extensions = [".doc", ".docx", ".odt", ".txt"
-                       ".pdf", ".xls", ".xlsx", ".ppt", ".pptx"]
+document_extensions = {".doc", ".docx", ".odt", ".txt"
+                       ".pdf", ".xls", ".xlsx", ".ppt", ".pptx"}
 # supported executable types
-executable_extensions = [".dmg", ".exe", ".msi", ".pkg", ".xar", ".rar", ".tar", ".zip", ".app"]
+executable_extensions = {".dmg", ".exe", ".msi", ".pkg", ".xar", ".rar", ".tar", ".zip", ".app"}
 # supported code file types
-code_extensions = [".m", ".mat", ".py", "js", ".htm", ".html", ".css"]
+code_extensions = {".m", ".mat", ".py", "js", ".htm", ".html", ".css"}
 
 def move_file(dest, entry, name):
     if exists(f"{dest}/{name}"):
@@ -59,7 +59,7 @@ def make_unique(dest, name):
 
 
 class MoverHandler(FileSystemEventHandler):
-    # THIS FUNCTION WILL RUN WHENEVER THERE IS A CHANGE IN "source_dir"
+    # this function will run whenever there is a change detected in "source_dir"
     # .upper is for not missing out on files with uppercase extensions
     def on_modified(self, event):
         with scandir(source_dir) as entries:
